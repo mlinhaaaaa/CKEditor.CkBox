@@ -1,0 +1,62 @@
+﻿@model News.Entities.News
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>News</h4>
+<hr />
+<div class="row justify-content-center">
+    <div>
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <div>
+                <label for="currentImage">Current Image:</label>
+                <br />
+                @if (!string.IsNullOrEmpty(Model.Image))
+                    @if (!string.IsNullOrEmpty(Model.Image))
+                    {
+                        <img src="@Url.Content("~/" + Model.Image)" alt="Current Image" width="300" />
+                    }
+                else
+                {
+                    <span>No image available</span>
+                }
+            </div>
+            <br />
+            <div>
+                <label for="newImage">Upload new image:</label>
+                <input type="file" id="newImage" name="newImage" />
+            </div>
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" value="@Model.Title" />
+            </div>
+            <div>
+                <label for="content">Content:</label>
+                <textarea name="content" id="content">@Model.Content</textarea>
+            </div>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckfinder/ckfinder.js"></script>
+    <script>
+        CKEDITOR.replace('content', {
+            filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+            filebrowserUploadUrl: '/ckfinder/connector?command=QuickUpload&type=Files'
+        });
+    </script>
+}

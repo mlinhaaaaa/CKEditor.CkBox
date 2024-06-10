@@ -1,0 +1,48 @@
+﻿@model News.Entities.News
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+<hr />
+<div class="row justify-content-center">
+    <div>
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="image">Upload images:</label>
+                <input type="file" id="image" name="image" />
+            </div>
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" />
+            </div>
+            <div>
+                <label for="text">Content:</label>
+                <textarea name="content" id="content"></textarea>
+            </div>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckfinder/ckfinder.js"></script>
+    <script>
+        CKEDITOR.replace('content', {
+            filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+            filebrowserUploadUrl: '/ckfinder/connector?comQuickUploadmand=&type=Files'
+        });
+    </script>
+}
