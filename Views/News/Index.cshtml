@@ -31,19 +31,11 @@
             <tr>
             <td>@i</td>
                 <td>
-                    @if (!string.IsNullOrEmpty(item.Image))
-                    {
-                        <img src="@Url.Content(item.Image)" alt="Image" style="max-width: 150px; max-height: 150px;" />
-                    }
-                    else
-                    {
-                        <span>No image</span>
-                    }
+                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
+                <td>
+                    <img src="@Url.Content(item.Image)" alt="Image" style="max-width: 150px; max-height: 150px;" />
+                </td>
                 <td>
                     @Html.Raw(item.Content)
                 </td>

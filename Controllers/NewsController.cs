@@ -49,6 +49,8 @@ namespace News.Controllers
         // GET: News/Create
         public IActionResult Create()
         {
+            var tokenUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}/token";
+            ViewData["Token"] = tokenUrl;
             return View();
         }
 
@@ -109,6 +111,8 @@ namespace News.Controllers
             {
                 return NotFound();
             }
+            var tokenUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}/token";
+            ViewData["Token"] = tokenUrl;
             return View(news);
         }
 

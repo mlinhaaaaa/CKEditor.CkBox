@@ -36,16 +36,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="CKFinder">
-      <HintPath>..\..\ckfinder\bin\Debug\CKFinder.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="Models\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\files\" />
