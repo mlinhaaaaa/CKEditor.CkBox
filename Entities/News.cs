@@ -12,4 +12,5 @@ public partial class News
     public string? Image { get; set; }
 
     public string? Content { get; set; }
+    public DateTime CreationTime { get; set; }
 }

@@ -25,8 +25,9 @@ namespace News.Controllers
         // GET: News
         public async Task<IActionResult> Index()
         {
-            return View(await _context.News.ToListAsync());
+            return View(await _context.News.OrderByDescending(n => n.CreationTime).ToListAsync());
         }
+
 
         // GET: News/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -70,7 +71,8 @@ namespace News.Controllers
                 var newsEntry = new Entities.News
                 {
                     Title = title,
-                    Content = content
+                    Content = content,
+                    CreationTime = DateTime.Now
                 };
                 _context.News.Add(newsEntry);
                 await _context.SaveChangesAsync();
@@ -97,6 +99,7 @@ namespace News.Controllers
             ModelState.AddModelError("image", "Image is required.");
             return View();
         }
+
 
         // GET: News/Edit/5
         public async Task<IActionResult> Edit(int? id)
